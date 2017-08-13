@@ -24,10 +24,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = '1inl#@n!gb^_ldy$e$1xk2peoe$%1bx*)26gywm7)*ei2efl7f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-ALLOWED_HOSTS = []
-
+DEBUG = True
 
 # Application definition
 
@@ -65,6 +62,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'catalog.context_processors.categories',
             ],
         },
     },
@@ -79,7 +77,7 @@ WSGI_APPLICATION = 'testeinorte.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db1.sqlite3'),
     }
 }
 
@@ -120,7 +118,6 @@ DATE_INPUT_FORMATS = ('%d/%m/%Y',)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-  
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 

@@ -1,6 +1,7 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+# coding:utf-8 
 
+from __future__ import unicode_literals
+from django.core.urlresolvers import reverse
 from django.db import models
 
 class Category(models.Model):
@@ -9,10 +10,17 @@ class Category(models.Model):
     created = models.DateTimeField('Criado em', auto_now_add=True)
     modified = models.DateTimeField('Modificado em', auto_now=True)
 
+    def __unicode__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('catalog:category', kwargs={'slug': self.slug})
+
     class Meta:
         verbose_name = 'Categoria'
         verbose_name_plural = 'Categorias'
         ordering = ['name']
+
 
 
 class Product(models.Model):
@@ -24,7 +32,16 @@ class Product(models.Model):
     created = models.DateTimeField('Criado em', auto_now_add=True)
     modified = models.DateTimeField('Modificado em', auto_now=True)
 
+
+    def __unicode__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('catalog:product', kwargs={'slug': self.slug})
+
     class Meta:
         verbose_name = 'Produto'
         verbose_name_plural = 'Produtos'
         ordering = ['name']
+
+
