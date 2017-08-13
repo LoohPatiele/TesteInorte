@@ -1,1 +1,1 @@
-web: gunicorn testeinorte.wsgi --log-file -
+web: gunicorn teste-inorte.wsgi --log-file -
