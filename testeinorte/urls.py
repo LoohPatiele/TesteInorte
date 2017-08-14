@@ -28,5 +28,5 @@ urlpatterns = [
     url(r'^sair/$', logout, {'next_page': 'index'}, name= 'logout'),
     url(r'^catalogo/', include('catalog.urls', namespace='catalog')),
     url(r'^conta/', include('accounts.urls', namespace='accounts')),
-    
+    url(r'^compras/', include('checkout.urls', namespace='checkout')),
 ]
