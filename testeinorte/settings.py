@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # apps
     'core',
     'catalog',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -135,6 +136,13 @@ ALLOWED_HOSTS = ['*']
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# auth
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_URL = 'logout' 
+AUTH_USER_MODEL = 'accounts.User'
+
 
 try:
     from .local_settings import *
