@@ -3,16 +3,25 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.core.mail import send_mail
+from django.views.generic import View, TemplateView
 
-from catalog.models import Category
+from .forms import ContactForm
 
-def index(request):
-    return render(request, "index.html")
+class IndexView(TemplateView):
+
+    template_name = 'index.html'
+
+index= IndexView.as_view()
 
 def contact(request):
-    return render(request, 'contact.html')
-
-
-
-def product(request):
-    return render(request, 'product.html')
+    success = False
+    form = ContactForm(request.POST or None)
+    if form.is_valid():
+        form.send_mail()
+        success = True
+    context = {
+        'form': form,
+        'success': success
+    }
+    return render(request, 'contact.html', context)
