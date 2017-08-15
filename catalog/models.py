@@ -33,6 +33,8 @@ class Product(models.Model):
     created = models.DateTimeField('Criado em', auto_now_add=True)
     modified = models.DateTimeField('Modificado em', auto_now=True)
     stock = models.IntegerField('Estoque',blank=False, null=False, default=5 )
+    image = models.ImageField('Imagem', upload_to='products', blank=True, null=True)
+
 
     def __unicode__(self):
         return self.name

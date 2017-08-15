@@ -128,6 +128,8 @@ DATE_INPUT_FORMATS = ('%d/%m/%Y',)
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/media/'
+
 db_from_env = dj_database_url.config(conn_max_age=500)
 
 DATABASES['default'].update(db_from_env)
@@ -137,6 +139,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import get_object_or_404, redirect
-from django.views.generic import RedirectView, TemplateView, ListView
+from django.views.generic import RedirectView, TemplateView, ListView, DetailView
 from django.contrib import messages
 from django.forms import modelformset_factory
 from django.core.urlresolvers import reverse
@@ -89,8 +89,6 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
         response.context_data['order'] = order
         return response
 
-    
-
 
 checkout = CheckoutView.as_view()
 
@@ -105,3 +103,14 @@ class OrderListView(LoginRequiredMixin, ListView):
 
 
 order_list = OrderListView.as_view()
+
+
+class OrderDetailView(LoginRequiredMixin, DetailView):
+
+    template_name = 'checkout/order_detail.html'
+
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user)
+
+
+order_detail = OrderDetailView.as_view()
