@@ -13,3 +13,6 @@ def cart_item_middleware(get_response):
             )
         return response
     return middleware
+
+
+# Não ta funfando ... ver alterações de versão do django

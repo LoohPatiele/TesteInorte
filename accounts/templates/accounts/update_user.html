@@ -1,4 +1,13 @@
-{% extends "accounts/index.html" %} {% load widget_tweaks %} {% block title %}Alterar Dados{% endblock %} {% block accounts_container %}
+{% extends "accounts/index.html" %} {% load widget_tweaks %} {% block title %}Alterar Dados{% endblock %} {% block tag_active %}
+<div class="col-md-4">
+    <div class="list-group">
+        <a href="{% url 'accounts:index' %}" class="list-group-item ">Minha Conta</a>
+        <a href="{% url 'accounts:update_user' %}" class="list-group-item active">Alterar Dados</a>
+        <a href="{% url 'accounts:update_password' %}" class="list-group-item">Alterar Senha</a>
+        <a href="{% url 'checkout:order_list' %}" class="list-group-item">Meus Pedidos</a>
+    </div>
+</div>
+{% endblock %} {% block accounts_container %}
 <h2>Alterar Dados</h2>
 <form class="form-horizontal" action="" method="post">
     {% csrf_token %}

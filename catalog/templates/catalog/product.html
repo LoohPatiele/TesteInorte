@@ -6,13 +6,24 @@
     <div class="col-sm-4">
         <a href="#" class="thumbnail">
             <img src="http://placehold.it/350x250" alt="" />
+
         </a>
+        <div>
+            Preço: {{product.price}}
+        </div>
+        <div>
+            Estoque: {{product.stock}}
+        </div>
     </div>
     <div class="col-sm-8">
         <p class="text-right">
             <a href="{% url 'checkout:create_cartitem' product.slug %}" class="btn btn-success">Adicionar ao Carrinho</a>
         </p>
-        {{ product.description | linebreaks }}
+        <div>
+            Descição: {{ product.description | linebreaks }}
+        </div>
+
+
     </div>
 </div>
 {% endblock container %}

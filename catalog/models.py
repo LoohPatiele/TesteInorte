@@ -24,6 +24,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+
     name = models.CharField('Nome', max_length=100)
     slug = models.SlugField('Identificador', max_length=100)
     category = models.ForeignKey('catalog.Category', verbose_name = 'Categoria')
@@ -31,7 +32,7 @@ class Product(models.Model):
     price = models.DecimalField('Preço', decimal_places=2, max_digits=10)
     created = models.DateTimeField('Criado em', auto_now_add=True)
     modified = models.DateTimeField('Modificado em', auto_now=True)
-
+    stock = models.IntegerField('Estoque',blank=False, null=False, default=5 )
 
     def __unicode__(self):
         return self.name
